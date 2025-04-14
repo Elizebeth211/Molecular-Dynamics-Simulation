@@ -1,0 +1,44 @@
+Code for influenza
+
+gmx grompp -f em.mdp -c step3_input.gro -p topol.top -o em.tpr
+gmx mdrun -v -deffnm em
+
+#Steepest Descents converged to Fmax < 1000 in 678 steps
+Potential Energy  = -6.3600775e+06
+Maximum force     =  9.1085852e+02 on atom 6721
+Norm of force     =  1.9780794e+01
+(This happens because it was mention in the input file of em.mdp that the simulation should stop <10 kg/mol)
+
+#Analysing the potential energy
+gmx energy -f em.edr -o potential.xvg
+xmgrace potential.xvg
+
+
+#md simulation  
+gmx make_ndx -f em.gro -o index.ndx
+(Combining CLA_TIP3_TOP)
+
+> 13 | 14  |15   
+after this I have to write q. 
+Copied index group 13 'POT'
+Copied index group 14 'CLA'
+Merged two groups with OR: 360 362 -> 722
+Copied index group 15 'TIP3'
+Merged two groups with OR: 722 377757 -> 378479
+After merging the molecule I have to rename the line 32 in md.mdp file
+ 16 POT_CLA_TIP3        : 378479 atoms
+
+#POT_CLA_TIP3 has to be include in the input md file
+gmx grompp -f md.mdp -c step3_input.gro -p topol.top -n index.ndx -o  md_0_1.tpr
+gmx mdrun -v -deffnm md_0_1
+
+
+
+#Analysis of Root mean square deviation, Root mean square fluctuation and Gyration
+gmx rms -s md_0_1.tpr -f md_0_1.xtc -o rmsd.xvg
+xmgrace rmsd.xvg
+gmx rmsf -s md_0_1.tpr -f md_0_1.xtc -o rmsf.xvg 
+xmgrace rmsf.xvg
+gmx gyrate -s md_0_1.gro -f md_0_1.xtc -o gyration.xvg
+xmgrace gyration.xvg
+
