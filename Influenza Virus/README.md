@@ -64,7 +64,7 @@ This folder contains the simulation setup, configuration files, and results for 
 
 ---
 
-## 📎 References
+##  References
 
 - RCSB PDB: [https://www.rcsb.org/structure/2YP2](https://www.rcsb.org/structure/2YP2)
 - CHARMM36: [https://mackerell.umaryland.edu/charmm_ff.shtml](https://mackerell.umaryland.edu/charmm_ff.shtml)
