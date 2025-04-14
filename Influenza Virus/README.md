@@ -6,12 +6,12 @@ This folder contains the simulation setup, configuration files, and results for 
 
 ## 📁 Folder Contents
 
-| Folder/File            | Description                                          |
+| File                   | Description                                          |
 |------------------------|------------------------------------------------------|
-| `input_files/`         | Topology, coordinates, and force field parameters    |
-| `equilibration/`       | Equilibration steps (NVT, NPT)                       |
-| `production/`          | Production run outputs                               |
-| `analysis/`            | Trajectory analysis scripts and results              |
+| `input_files`         | Topology, coordinates, and force field parameters    |
+| `equilibration`       | Equilibration steps (NVT, NPT)                       |
+| `production`          | Production run outputs                               |
+| `analysis`            | Trajectory analysis scripts and results              |
 | `2YP2.pdb`             | Original PDB structure from RCSB                     |
 | `README.md`            | This documentation                                   |
 
