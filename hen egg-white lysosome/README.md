@@ -1,6 +1,6 @@
 # 🧬 # MD Simulation of Gallus gallus (1AKI)
 
-This folder contains the simulation setup, configuration files, and results for the molecular dynamics (MD) simulation of **Influenza Virus (PDB ID: 2YP2)** using [GROMACS](http://www.gromacs.org/).
+This folder contains the simulation setup, configuration files, and results for the molecular dynamics (MD) simulation of **Influenza Virus (PDB ID: 1AKI)** using [GROMACS](http://www.gromacs.org/).
 
 ---
 
@@ -8,10 +8,10 @@ This folder contains the simulation setup, configuration files, and results for 
 
 | File                   | Description                                          |
 |------------------------|------------------------------------------------------|
-| `input_files`         | Topology, coordinates, and force field parameters    |
-| `equilibration`       | Equilibration steps (NVT, NPT)                       |
-| `production`          | Production run outputs                               |
-| `analysis`            | Trajectory analysis scripts and results              |
+| `input_files`          | Topology, coordinates, and force field parameters    |
+| `equilibration`        | Equilibration steps (NVT, NPT)                       |
+| `production`           | Production run outputs                               |
+| `analysis`             | Trajectory analysis scripts and results              |
 | `2YP2.pdb`             | Original PDB structure from RCSB                     |
 | `README.md`            | This documentation                                   |
 
@@ -21,7 +21,6 @@ This folder contains the simulation setup, configuration files, and results for 
 
 - **Software used:** GROMACS 2023
 - **Force field:** OPLSAA force field
-- **Water model:** TIP3P
 - **Total simulation time:** 100 ns
 
 ---
@@ -67,7 +66,7 @@ This folder contains the simulation setup, configuration files, and results for 
 ##  References
 
 - RCSB PDB: [https://www.rcsb.org/structure/2YP2](https://www.rcsb.org/structure/1AKI)
-- 
+- [GROMACS](http://www.gromacs.org/).
 
 ---
 
