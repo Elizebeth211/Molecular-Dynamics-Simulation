@@ -60,7 +60,7 @@ This folder contains the simulation setup, configuration files, and results for 
 ## 📝 Notes
 
 - Make sure to load the correct version of GROMACS before running scripts.
-
+There are some large file which you can get from here https://www.dropbox.com/scl/fo/mti3soowgfwyvjql64erq/AMkIg8BXGv6IXOogTYg-MWc?rlkey=l3mnqjfefkg2jbgc4hdn9efo1&st=2ukc6n9t&dl=0
 
 ---
 
