@@ -1,0 +1,47 @@
+#code to rum simulation of Lysososome_in_water(Hen_Egg_Lysosome)
+# The folder is in Documents containing the .pdb file downloaded from protein data bank
+
+cd Desktop
+cd Lysosome_in_water
+grep -v HOH 1aki.pdb
+grep -v HOH 1aki.pdb > 1aki_clean.pdb # remove water molecule from the downloaded protein file 
+gmx pdb2gmx -f 1aki_clean.pdb -o 1aki_processed.gro -water spce #set up topology
+gmx editconf -f 1aki_processed.gro -o 1aki_newbox.gro -c -d 1.0 -bt cubic #define the box using editconf
+gmx solvate -cp 1aki_processed.gro -cs spc216.gro -o 1aki_solv.gro -p topol.top
+
+#Adding Ions
+gmx grompp -f ions.mdp -c 1aki_solv.gro -p topol.top -o ions.tpr 
+gmx genion -s ions.tpr -o 1aki_solv.ions.gro -p topol.top -pname NA -nname CL -neutral
+#Energy minization 
+
+gmx grompp -f em.mdp -c 1aki_solv.ions.gro -p topol.top -o em.tpr
+gmx mdrun -v -deffnm em
+
+gmx energy -f em.edr -o potential.xvg
+xmgrace potential.xvg
+
+#nvt (Number of particles, Volume, and Temperature)
+gmx grompp -f nvt.mdp -c em.gro -r em.gro -p topol.top -o nvt.tpr
+gmx mdrun -deffnm nvt
+
+gmx energy -f nvt.edr -o temperature.xvg
+xmgrace temperature.xvg
+
+#npt (Number of particles, Pressure, and Temperature)
+gmx grompp -f npt.mdp -c nvt.gro -r nvt.gro -t nvt.cpt -p topol.top -o npt.tpr
+gmx mdrun -deffnm npt
+
+gmx energy -f npt.edr -o pressure.xvg
+xmgrace pressure.xvg
+
+gmx energy -f npt.edr -o density.xvg
+xmgrace density.xvg
+
+gmx grompp -f md.mdp -c npt.gro -t npt.cpt -p topol.top -o md_0_1.tpr
+gmx mdrun -v -deffnm md_0_1
+ 
+#Analysis
+gmx trjconv -s md_0_1.tpr -f md_0_1.xtc -o md_0_1_noPBC.xtc -pbc mol -center {Select 1 ("Protein") as the group to be centered and 0 ("System") for output}
+gmx rms -s md_0_1.tpr -f md_0_1_noPBC.xtc -o rmsd.xvg -tu ns {Choose 4 ("Backbone") for both the least-squares fit and the group for RMSD calculation}
+gmx rms -s em.tpr -f md_0_1_noPBC.xtc -o rmsd_xtal.xvg -tu ns
+gmx gyrate -s md_0_1.tpr -f md_0_1_noPBC.xtc -o gyrate.xvg {Choose group 1 for protein analysis}
