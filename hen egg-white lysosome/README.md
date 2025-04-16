@@ -65,7 +65,7 @@ This folder contains the simulation setup, configuration files, and results for 
 
 ##  References
 
-- RCSB PDB: [https://www.rcsb.org/structure/2YP2](https://www.rcsb.org/structure/1AKI)
+- RCSB PDB: [https://www.rcsb.org/structure/1AKI](https://www.rcsb.org/structure/1AKI)
 - [GROMACS](http://www.gromacs.org/).
 
 ---
