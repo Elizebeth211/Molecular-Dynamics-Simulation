@@ -12,7 +12,7 @@ This folder contains the simulation setup, configuration files, and results for 
 | `equilibration`        | Equilibration steps (NVT, NPT)                       |
 | `production`           | Production run outputs                               |
 | `analysis`             | Trajectory analysis scripts and results              |
-| `2YP2.pdb`             | Original PDB structure from RCSB                     |
+| `1AKI.pdb`             | Original PDB structure from RCSB                     |
 | `README.md`            | This documentation                                   |
 
 ---
